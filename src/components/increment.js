@@ -9,12 +9,13 @@ class Increment extends Component {
             show:true
         };
     }
+    
     tambahNum = () =>{
         this.setState({num: this.state.num +1 })
     }
     kurangNum = () =>{
         let num = this.state.num;
-        if ( num == 0){
+        if ( num === 0){
             window.alert('Tidak bisa Angka Minus')
         } else {
             this.setState({num: this.state.num -1 });
