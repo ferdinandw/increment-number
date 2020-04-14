@@ -6,12 +6,22 @@ class Increment extends Component {
         super(props);
         this.state = {
             num: 0,
-            show:true
         };
     }
     
     tambahNum = () =>{
         this.setState({num: this.state.num +1 })
+    }
+    numSeratus = () =>{
+        this.setState({num: this.state.num + 100})
+    }
+    numMinSeratus = () =>{
+        let num = this.state.num;
+        if ( num === 0){
+            window.alert('Tidak bisa Angka Minus')
+        } else {
+            this.setState({num: this.state.num - 100 });
+        }
     }
     kurangNum = () =>{
         let num = this.state.num;
@@ -30,12 +40,14 @@ class Increment extends Component {
             <div>
                 <Wrapper>
                 <span>
+                <Button onClick={this.numSeratus}>+100</Button>
                 <Button primary onClick={this.tambahNum}>+</Button>
                 <Input value={this.state.num}></Input>
                 <Button primary onClick={this.kurangNum}>-</Button>
+                <Button onClick={this.numMinSeratus}>-100</Button>
                 </span>
                 </Wrapper>
-                <Button primary onClick={this.reset}>RESET</Button>
+                <Button onClick={this.reset}>RESET</Button>
             </div>
         )
     }
@@ -45,7 +57,7 @@ export default Increment;
 
 const Button = styled.button`
     background: ${props => props.primary ? "palevioletred" : "white"};
-    color: ${props => props.primary ? "white" : "palevioletred"};
+    color: ${props => props.primary ? "white" : "red"};
     font-size: 1.2em;
     margin: 0.5em;
     padding: 0.25em 1em;
